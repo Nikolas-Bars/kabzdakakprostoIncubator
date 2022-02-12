@@ -35,7 +35,7 @@ function App() {
         <UnControlledAccordeon title={"Menu"}/>
             <UnControlledAccordeon title={"Users"}/>
             <Rating value={1}/>
-            <Rating value={3}/>
+
         </div>
     );
 }
