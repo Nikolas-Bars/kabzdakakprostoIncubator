@@ -1,13 +1,29 @@
 import React, {useState} from "react";
 
-type UnControlledAccordeon = {
-    title?: string
-    collapsed?: boolean
+type UnControlledAccordeonPropsType = {
+    titleValue: string
+
 }
 
-function UnControlledAccordeon(props: UnControlledAccordeon) {
+function UnControlledAccordeon(props: UnControlledAccordeonPropsType) {
     console.log("Accordeon is Rendering")
 
+
+    let [collapsed, setCollapsed] = useState(false)
+
+    let onClickHandler = () => {
+
+        setCollapsed(!collapsed)
+        console.log(collapsed)
+    }
+
+    return <div>
+        <AccordeonTitle title={props.titleValue} onClick={onClickHandler}/>
+        {!collapsed && <AccordeonBody/>}
+    </div>
+}
+
+/*
     let [collapsed, setCollapsed] = useState(true)
 
     let onClickSetCollapsedFalse =()=>{
@@ -16,19 +32,16 @@ function UnControlledAccordeon(props: UnControlledAccordeon) {
     let onClickSetCollapsedTrue =()=>{
         setCollapsed(true)
     }
+*/
 
-
-
-    return <div>
-        <div>{collapsed ? <button onClick={onClickSetCollapsedFalse}>Скрыть</button> :  <button onClick={onClickSetCollapsedTrue}>показать</button>}<AccordeonTitle title={props.title}/></div>
-        {collapsed && <div><AccordeonBody/></div>}
-    </div>
+type AccordeonTitlePropsType = {
+    title: string
+    onClick: () => void
 }
 
-
-function AccordeonTitle(props: any) {
+function AccordeonTitle(props: AccordeonTitlePropsType) {
     console.log("AccordeonTitle is Rendering")
-    return <h3>{props.title}</h3>
+    return (<h3 onClick={props.onClick}> {props.title} </h3>)
 
 }
 

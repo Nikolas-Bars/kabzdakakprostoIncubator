@@ -1,11 +1,42 @@
 import React, {useState} from "react";
+import {RaitingValuesType} from "../../App";
 
 type RatingPropsType = {
-    value: 0 | 1 | 2 | 3 | 4 | 5
+    value: RaitingValuesType
+    onClick: (value: RaitingValuesType)=> void
 }
 
 function Rating(props: RatingPropsType) {
     console.log("Rating is rendering")
+
+
+    return (
+        <div>
+            <Star selected={props.value > 0} onClick={props.onClick} value={1}/>
+            <Star selected={props.value > 1} onClick={props.onClick} value={2}/>
+            <Star selected={props.value > 2} onClick={props.onClick} value={3}/>
+            <Star selected={props.value > 3} onClick={props.onClick} value={4}/>
+            <Star selected={props.value > 4} onClick={props.onClick} value={5}/>
+        </div>
+    )
+
+}
+
+
+type StarPropsType = {
+    selected: boolean
+    value: RaitingValuesType
+    onClick: (value: RaitingValuesType)=> void
+}
+
+function Star(props: StarPropsType) {
+    return (
+        <span onClick={()=>{props.onClick(props.value)}} >{props.selected ? <b>Star</b> : 'Star'}</span>
+    )
+}
+
+
+/*
 
     let [raiting, setRaiting] = useState(0)
 
@@ -83,7 +114,7 @@ function Star(props: StarPropsType) {
         return <div style={divStyle} onClick={props.button}><span ><b>Star </b></span></div>
     } else {
         return <div style={divStyle1} onClick={props.button}><span>Star </span></div>
-    }
-}
+    }*/
+
 
 export default Rating
