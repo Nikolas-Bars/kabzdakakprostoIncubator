@@ -1,25 +1,30 @@
-import React, {useState} from "react";
+import React, {useReducer} from "react";
+import {reducer, TOGGLE_COLLAPSED} from "./reducer";
+
 
 type UnControlledAccordeonPropsType = {
     titleValue: string
 
 }
 
+
 function UnControlledAccordeon(props: UnControlledAccordeonPropsType) {
     console.log("Accordeon is Rendering")
 
 
-    let [collapsed, setCollapsed] = useState(false)
+    //let [collapsed, setCollapsed] = useState(false)
+
+    let [collapsed, dispatch] = useReducer(reducer, {collapsed: false})
 
     let onClickHandler = () => {
 
-        setCollapsed(!collapsed)
+        dispatch({type: TOGGLE_COLLAPSED})
         console.log(collapsed)
     }
 
     return <div>
         <AccordeonTitle title={props.titleValue} onClick={onClickHandler}/>
-        {!collapsed && <AccordeonBody/>}
+        {!collapsed.collapsed && <AccordeonBody/>}
     </div>
 }
 

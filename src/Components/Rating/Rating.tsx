@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {RaitingValuesType} from "../../App";
 
-type RatingPropsType = {
+export type RatingPropsType = {
     value: RaitingValuesType
     onClick: (value: RaitingValuesType)=> void
 }

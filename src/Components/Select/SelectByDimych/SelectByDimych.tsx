@@ -21,6 +21,13 @@ export function SelectByDimytch(props: SelectByDimytchPropsType) {
     const [active, setActive] = useState(true)
     const [hoveredElementValue, sethoveredElementValue] = useState(props.value)
 
+
+
+
+
+
+
+
     const selectItem = props.item.find(el => el.value === props.value)
     const hoveredItem = props.item.find(el => el.value === hoveredElementValue)
 
