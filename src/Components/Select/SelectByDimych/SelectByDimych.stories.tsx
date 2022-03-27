@@ -8,20 +8,20 @@ export default {
 }
 
 let items = [
-    {title: 'dfa', value: '1'},
-    {title: 'werwe', value: '2'},
-    {title: 'sdf', value: '3'},
-    {title: 'xcvxcv', value: '4'},
-    {title: '56456', value: '5'},
-    {title: 'asd', value: '6'},
-    {title: 'cxzxc', value: '7'},
+    {title: 'dfa', value: '1', city: 'минск'},
+    {title: 'werwe', value: '2', city: 'минск'},
+    {title: 'sdf', value: '3', city: 'минск'},
+    {title: 'xcvxcv', value: '4', city: 'минск'},
+    {title: '56456', value: '5', city: 'минск'},
+    {title: 'asd', value: '6', city: 'минск'},
+    {title: 'cxzxc', value: '7', city: 'минск'},
 
 ]
 export const WithValue = () => {
 
     const [value, setValue] = useState('2')
 
-    const changeValue = (newValue:string) =>{
+    const changeValue = (newValue: string) => {
 
         setValue(newValue)
     }
@@ -39,10 +39,11 @@ export const WithoutValue = () => {
 
     const [value, setValue] = useState(null)
 
-    const changeValue = (newValue: any) =>{
+    const changeValue = (newValue: any) => {
 
-    setValue(newValue)
-}
+        setValue(newValue)
+    }
     return <>
-    <SelectByDimytch value={value} onChange={changeValue} item={items} /> {/*// ОБЯЗАТЕЛЬНЫ ПРОБЕЛЫ  = () =>*/}
-    </>}
+        <SelectByDimytch value={value} onChange={changeValue} item={items}/> {/*// ОБЯЗАТЕЛЬНЫ ПРОБЕЛЫ  = () =>*/}
+    </>
+}

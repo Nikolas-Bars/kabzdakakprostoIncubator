@@ -6,6 +6,8 @@ import {useState, KeyboardEvent, useEffect} from "react";
 export type Itemtype = {
     title: string
     value: any
+    city: string
+    population?: number
 }
 
 
@@ -17,16 +19,10 @@ export type SelectByDimytchPropsType ={
 
 export function SelectByDimytch(props: SelectByDimytchPropsType) {
 
+    console.log('render')
 
     const [active, setActive] = useState(true)
     const [hoveredElementValue, sethoveredElementValue] = useState(props.value)
-
-
-
-
-
-
-
 
     const selectItem = props.item.find(el => el.value === props.value)
     const hoveredItem = props.item.find(el => el.value === hoveredElementValue)
@@ -75,13 +71,6 @@ export function SelectByDimytch(props: SelectByDimytchPropsType) {
 
     return (
         <div>
-
-            <select>
-                <option value=''>Minsk</option>
-                <option value=''>Moscow</option>
-                <option value=''>Kiev</option>
-            </select>
-
 
             <div className={s.select}  onKeyUp={onKeyUp} tabIndex={0}>
                 <span className={s.main} onClick={toggleItems}>{selectItem && selectItem.title}</span>
